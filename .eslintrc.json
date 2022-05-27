@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended", // 이에스린트에서 추천하는 규칙
+    "plugin:vue/vue3-recommended"  // 뷰쓰리에서 추천하는 규칙
+  ],
+  "rules": {
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "eol-last": ["error", "always"],  // 파일 맨 아래 빈줄을 하나 넣어줄께 항상
+
+    "vue/html-closing-bracket-newline": ["error", {
+      "singleline": "never",
+      "multiline": "never"
+    }],
+    "vue/html-self-closing": ["error", {
+      "html": {
+        "void": "always",
+        "normal": "never",
+        "component": "always"
+      },
+      "svg": "always",
+      "math": "always"
+    }],
+    "vue/comment-directive": "off",
+    "vue/multi-word-component-names": "off"
+  }
+}
