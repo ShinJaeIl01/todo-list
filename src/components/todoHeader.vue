@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="nav">
+    <nav class="nav flex-column">
       <div
         v-for="nav in navigations"
         :key="nav.name"

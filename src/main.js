@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
+import VueRouter from './routes'
+import store from './store'
 import App from './App.vue'
-import VueRouter from './routes/index'
+
 
 
 
 createApp(App)
   .use(VueRouter)
+  .use(store)
   .mount('#app')
 

@@ -1,3 +1,13 @@
 <template>
-  <h1>home</h1>
+  <todoList />
 </template>
+
+<script>
+import todoList from '../components/todoList.vue'
+
+export default {
+  components: {
+    todoList
+  }
+}
+</script>
