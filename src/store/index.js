@@ -39,6 +39,28 @@ export default createStore({
           title
         }
       })
+    },
+    async deleteTodo(context, id) {
+      await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${id}`,// 아이디 값을 찾아 넣어야해
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+          'apikey': 'FcKdtJs202204',
+          'username': 'KDT2_ShinJaeIL'
+        }
+      })
+    },
+    async editTodo(id) {
+      await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${id}`,// 아이디 값을 찾아 넣어야해
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+          'apikey': 'FcKdtJs202204',
+          'username': 'KDT2_ShinJaeIL'
+        }
+      })
     }
   }
 })

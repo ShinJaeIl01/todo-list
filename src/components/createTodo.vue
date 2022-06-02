@@ -1,8 +1,10 @@
 <template>
   <input
-    :value="title"
-    @input="title = $event.target.value" />
-  <button @click="createTodo">
+    v-model="title"
+    class="todoInput"
+    @keydown.enter="createTodo" />
+  <button
+    @click="createTodo">
     생성
   </button>
 </template>
@@ -15,10 +17,12 @@ export default {
     }
   },
   methods: {
-    createTodo() {
+    async createTodo() {
       if (!this.title.trim()) return
 
-      this.$store.dispatch('createTodo', this.title)
+      await this.$store.dispatch('createTodo', this.title)
+      this.title = null
+      this.$store.dispatch('readTodos')
     }
   }
 }
