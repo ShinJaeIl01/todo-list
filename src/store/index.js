@@ -10,6 +10,9 @@ export default createStore({
   mutations: {
     setTodos(state, payload) { // 서버에서 가져온 투두스를 페이로드로 받아서 투두스를 갱신한다.
       state.todos = payload
+    },
+    addTodo(state,payload) {
+      state.todos.push(payload)
     }
   },
   actions: {
@@ -26,8 +29,8 @@ export default createStore({
       console.log(res)
       commit('setTodos', res.data)
     },
-    async createTodo(context, title) {
-      await axios({
+    async createTodo({ commit }, title) {
+      const res = await axios({
         url: 'https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos',
         method: 'POST',
         headers: {
@@ -39,6 +42,7 @@ export default createStore({
           title
         }
       })
+      commit('addTodo', res.data)
     },
     async deleteTodo(context, id) {
       await axios({
@@ -49,7 +53,7 @@ export default createStore({
           'apikey': 'FcKdtJs202204',
           'username': 'KDT2_ShinJaeIL'
         }
-      })
+      })      
     },
     async editTodo(id) {
       await axios({

@@ -22,7 +22,6 @@ export default {
 
       await this.$store.dispatch('createTodo', this.title)
       this.title = null
-      this.$store.dispatch('readTodos')
     }
   }
 }

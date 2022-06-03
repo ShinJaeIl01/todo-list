@@ -4,9 +4,10 @@
     <todoItem 
       v-for="todo in todos"
       :key="todo.id"
-      :title="todo.title"
+      :todo="todo"
       @delete="deleteTodo(todo.id)"
-      @edit="editTodo(todo, id)" />
+      @edit="editTodo(todo, id)"
+      @update="todo.title = $event" />
   </ul>
 </template>
 
@@ -19,7 +20,8 @@ export default {
   },
   emit: [
     'delete',
-    'edit'
+    'edit',
+    'update'
   ],
   computed: {
     todos() {
@@ -38,7 +40,9 @@ export default {
     },
     deleteTodo(id) {
       this.$store.dispatch('deleteTodo', id)
-    },
+      const index = this.todos.findIndex(todo => todo.id === id)
+      this.todos.splice(index, 1)
+},
     editTodo(id) {
       this.$store.dispatch('editTodo', id)
     }
